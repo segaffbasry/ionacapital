@@ -1,0 +1,267 @@
+{
+  "scraped": "2026-10-01T13:48:17.835Z",
+  "hero": {
+    "title": "Sustainable Infrastructure Investment",
+    "lead": "Kanadevia Inova is an investment manager specialising in the biogas and renewable energy sectors.",
+    "ctas": [
+      {
+        "label": "Who We Are",
+        "href": "https://ionacapital.co.uk/iona-team/"
+      },
+      {
+        "label": "What We Do",
+        "href": "https://ionacapital.co.uk/sustainable-investment-focus/"
+      }
+    ]
+  },
+  "purpose": {
+    "title": "Purpose Statement",
+    "quote": "\"For a future free of wasted waste.\""
+  },
+  "articles": {
+    "eyebrow": "Sustainability Expertise",
+    "title": "Articles",
+    "posts": [
+      {
+        "title": "Kanadevia Inova acquires Wardley and Lower Drayton biogas",
+        "href": "https://ionacapital.co.uk/news/kanadevia-inova-acquires-wardley-and-lower-drayton-biogas-plants-to-expand-renewable-gas-portfolio/",
+        "date": "October 29, 2025",
+        "excerpt": "Kanadevia Inova acquires Wardley and Lower Drayton biogas plants to expand renewable gas portfolio Both plants are accredited under the UK Government’s Renewable Heat Incentive",
+        "image": "https://ionacapital.co.uk/wp-content/uploads/2025/11/Wardley-and-Lower-Drayton-300x175.jpg"
+      },
+      {
+        "title": "Kanadevia Inova takes majority stake in Dutch biomethane facility",
+        "href": "https://ionacapital.co.uk/news/kanadevia-inova-takes-majority-stake-in-dutch-biomethane-facility/",
+        "date": "February 18, 2025",
+        "excerpt": "Kanadevia Inova takes majority stake in Dutch biomethane facility Swiss-based greentech company announces its first investment in the country’s biogas sector, paving the way for",
+        "image": "https://ionacapital.co.uk/wp-content/uploads/2025/10/Cothen-Biogas-300x200.jpg"
+      },
+      {
+        "title": "Kanadevia Inova acquires Iona Capital along with UK biogas portfolio",
+        "href": "https://ionacapital.co.uk/news/kanadevia-inova-acquires-iona-capital-along-with-uk-biogas-portfolio/",
+        "date": "January 7, 2025",
+        "excerpt": "Kanadevia Inova acquires Iona Capital along with UK biogas portfolio Swiss-based green-tech company Kanadevia Inova strengthens its commitment to accelerating decarbonisation by acquiring Iona Capital",
+        "image": "https://ionacapital.co.uk/wp-content/uploads/2025/01/Gravel-Pit-300x274.jpg"
+      }
+    ],
+    "cta": {
+      "label": "Discover Our Sustainablity Insights",
+      "href": "https://ionacapital.co.uk/iona-insights/"
+    }
+  },
+  "audiences": [
+    {
+      "title": "for Investors",
+      "text": "Are you an institutional investor looking for a new sustainable investment opportunity? Let us make the case for KVI — just click the link below to learn more about what drives our success.",
+      "cta": {
+        "label": "Understand KVI's Business Principles",
+        "href": "https://ionacapital.co.uk/about/"
+      }
+    },
+    {
+      "title": "for Developers",
+      "text": "Do you have a sustainable technology that pushes innovation and helps our environment? If so, discover if your company fits in with our investment portfolio. Who knows, we could be working together before you know it.",
+      "cta": {
+        "label": "Discover Our Investment Approach",
+        "href": "https://ionacapital.co.uk/sustainable-investment-focus/"
+      }
+    }
+  ],
+  "footer": {
+    "address": [
+      "Kanadevia Inova Capital Ltd.123 Pall MallLondon SW1Y 5EA",
+      "Tel: +44(0) 20 7064 3300"
+    ],
+    "groups": [
+      {
+        "title": "Key Pages",
+        "links": [
+          {
+            "label": "About",
+            "href": "https://ionacapital.co.uk/about/"
+          },
+          {
+            "label": "Investment Focus",
+            "href": "https://ionacapital.co.uk/sustainable-investment-focus/"
+          },
+          {
+            "label": "Sustainability",
+            "href": "https://ionacapital.co.uk/sustainable-investing/"
+          },
+          {
+            "label": "Investments",
+            "href": "https://ionacapital.co.uk/investments/"
+          },
+          {
+            "label": "News",
+            "href": "https://ionacapital.co.uk/news/"
+          }
+        ]
+      },
+      {
+        "title": "Useful Information",
+        "links": [
+          {
+            "label": "Terms & Conditions",
+            "href": "https://ionacapital.co.uk/terms-and-conditions/"
+          },
+          {
+            "label": "Privacy Policy",
+            "href": "https://ionacapital.co.uk/privacy-policy/"
+          },
+          {
+            "label": "Cookie Policy",
+            "href": "https://ionacapital.co.uk/cookie-policy/"
+          },
+          {
+            "label": "Contact Us",
+            "href": "https://ionacapital.co.uk/contact-us/"
+          }
+        ]
+      }
+    ]
+  },
+  "nav": [
+    {
+      "label": "About",
+      "href": "https://ionacapital.co.uk/about/",
+      "children": [
+        {
+          "label": "Team",
+          "href": "https://ionacapital.co.uk/iona-team/"
+        }
+      ]
+    },
+    {
+      "label": "Sustainability",
+      "href": "https://ionacapital.co.uk/sustainable-investing/",
+      "children": []
+    },
+    {
+      "label": "Investment Focus",
+      "href": "https://ionacapital.co.uk/sustainable-investment-focus/",
+      "children": [
+        {
+          "label": "Bioenergy",
+          "href": "https://ionacapital.co.uk/bioenergy/"
+        },
+        {
+          "label": "Energy From Waste",
+          "href": "https://ionacapital.co.uk/energy-from-waste/"
+        },
+        {
+          "label": "Energy Efficiency",
+          "href": "https://ionacapital.co.uk/energy-efficiency/"
+        }
+      ]
+    },
+    {
+      "label": "Investments",
+      "href": "https://ionacapital.co.uk/investments/",
+      "children": []
+    },
+    {
+      "label": "News",
+      "href": "https://ionacapital.co.uk/news/",
+      "children": [
+        {
+          "label": "Insights",
+          "href": "https://ionacapital.co.uk/iona-insights/"
+        }
+      ]
+    }
+  ],
+  "socials": [
+    {
+      "label": "Twitter",
+      "href": "https://twitter.com/iona_capital?lang=en"
+    },
+    {
+      "label": "Linkedin",
+      "href": "https://www.linkedin.com/company/iona-capital-ltd/?viewAsMember=true"
+    },
+    {
+      "label": "Envelope",
+      "href": "https://ionacapital.co.uk/contact-us/"
+    }
+  ],
+  "focus": {
+    "title": "Investment Focus",
+    "kicker": "How Kanadevia Inova Capital adds value",
+    "value": [
+      "Negotiating exclusive rights to projects with developers",
+      "De-risking through design, structuring and contracts negotiation",
+      "Delivering these projects to financial completion",
+      "Ensuring that they achieve operational performance targets"
+    ],
+    "blocks": [
+      {
+        "title": "New Project Specialisation",
+        "text": "Kanadevia Inova Capital specialises in primary investments in sustainable infrastructure projects, with a particular focus on Bioenergy, Energy Efficiency, Energy from Waste, and Recycling."
+      },
+      {
+        "title": "Low Risk Investments",
+        "text": "The core philosophy underpinning the selection of projects is that they are well-proven technologies / processes with strong counterparties thereby lowering the overall risk profile. Construction risk is further reduced with a comprehensive construction contract package with non-performance penalties."
+      },
+      {
+        "title": "Attractive Returns",
+        "text": "Kanadevia Inova Capital seeks to deliver unlevered returns of 10% + which it achieves by investing in primary projects and delivering these projects through to full operational capability. These projects are typically financed with 100% equity (5% pure equity, 95% shareholder loans) but once fully operational a refinancing will be undertaken."
+      },
+      {
+        "title": "Carbon Savings",
+        "text": "Kanadevia Inova Capital is a signatory to PRI with an A rating across all categories and provides clear reports on key ESG KPI’s. This includes specific and measurable carbon savings."
+      }
+    ]
+  },
+  "sectors": [
+    {
+      "title": "Bioenergy",
+      "href": "https://ionacapital.co.uk/bioenergy/",
+      "paragraphs": [
+        "Anaerobic digestion (“AD”) is the process of using organic materials including food, agricultural wastes, and crops.",
+        "These biodegradable wastes are broken down by naturally occurring micro-organisms in the absence of oxygen-producing methane-rich biogas. This biogas is used to produce heat and electricity or upgraded to methane and injected into the gas grid.",
+        "The AD process also produces a nutrient-rich substrate that is used as a substitute for chemical fertilisers. A summary of the AD process is shown below."
+      ]
+    },
+    {
+      "title": "Energy from Waste",
+      "href": "https://ionacapital.co.uk/energy-from-waste/",
+      "paragraphs": [
+        "Energy from waste (EFW) defines a type of incineration that involves burning waste at high temperatures to produce energy.",
+        "Kanadevia Inova Capital has developed a portfolio of Energy from Waste (“EfW”) projects to take advantage of the market opportunity as the UK moves towards full diversion of waste from landfill."
+      ]
+    },
+    {
+      "title": "Energy Efficiency",
+      "href": "https://ionacapital.co.uk/energy-efficiency/",
+      "paragraphs": [
+        "Combined Heat and Power (“CHP”) is a well proven technology which converts natural gas into both electricity and heat in a single process. The engine is connected to an alternator to produce electricity and the heat is recovered from the engine. Tri-generation is also possible, whereby cooling is available.",
+        "Kanadevia Inova Capital provides businesses an efficient energy generation solution consisting of an on site CHP engine enabling a stable supply of lower cost heat and power. It also delivers environmental improvements by replacing less efficient heat generation or cooling systems thus lowering the business’ carbon footprints.",
+        "CHP systems are particularly attractive to businesses requiring heat, cooling and/or power for extended periods of time such as: Manufacturers, Cold Stores, Data Centres, Hotels, Process Plants, Leisure Centres"
+      ]
+    }
+  ],
+  "assets": [
+    "Aerospace Energy UK",
+    "Biogen Gwyriad",
+    "Biogen Waen",
+    "Black Brook CHP",
+    "Bridgwater Resource Recovery",
+    "Brocklesby Biogas",
+    "Cothen Biogas",
+    "Crofthead Biogas",
+    "Gravel Pit Biogas",
+    "Haworth ASL",
+    "Home Farm Biogas",
+    "Howla Hay Biogas",
+    "Iona Management Services",
+    "Keithick Biogas",
+    "Leeming Biogas",
+    "New Mill Biogas",
+    "St Boswells Biogas",
+    "Washfold Biogas",
+    "Westholme Farm Biogas",
+    "Whitchurch Biogas",
+    "Wray House Biogas"
+  ]
+}
