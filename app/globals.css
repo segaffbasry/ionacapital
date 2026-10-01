@@ -1,0 +1,133 @@
+/* ------------------------------------------------------------------------------------------------
+   Fonts: the live site's own families (Elementor kit, post-6.css): Raleway for the hero H1, Noto Sans everywhere
+   else. Self-hosted variable files from @fontsource-variable (latin subset).
+   ------------------------------------------------------------------------------------------------ */
+@font-face {
+  font-family: "Raleway";
+  src: url("/fonts/raleway-latin-wght-normal.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Noto Sans";
+  src: url("/fonts/noto-sans-latin-wght-normal.woff2") format("woff2-variations");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+:root {
+  /* Palette: four colours, all from the brand (README "Palette"). Nothing else is used, including hovers, focus
+     rings and gradients; neutrals are tints of navy, made with color-mix so they stay in the same hue. */
+  --navy: #004961;   /* live site text colour rgb(0,73,97) (nav, post titles) */
+  --green: #00a082;  /* Kanadevia green rgb(0,160,130), live CSS + the wordmark gradient's start */
+  --blue: #2862a0;   /* "INOVA" fill in the live wordmark (kanadevia.svg .cls-2) */
+  --white: #ffffff;
+
+  --ink: var(--navy);
+  --ink-2: color-mix(in srgb, var(--navy) 84%, var(--white)); /* body copy: 6.4:1 on white, 5.9:1 on --card */
+  --ink-3: color-mix(in srgb, var(--navy) 78%, var(--white)); /* labels, dates: 5.4:1 on white, 4.7:1 on the hover tint */
+  --line: color-mix(in srgb, var(--navy) 16%, var(--white));  /* KAIB --color-black100 #dce1e6 */
+  --line-2: color-mix(in srgb, var(--navy) 26%, var(--white)); /* KAIB --color-black200 #c1c6cb */
+  --card: color-mix(in srgb, var(--navy) 5%, var(--white));    /* KAIB --color-card-background #eff0f1 */
+  --hover: color-mix(in srgb, var(--navy) 8%, var(--white));   /* KAIB --color-button-inactive #f0f3f5 */
+  --active: color-mix(in srgb, var(--blue) 17%, var(--white)); /* KAIB --color-button-active #d8e2eb */
+  --brand-gradient: linear-gradient(90deg, var(--green), var(--blue));
+
+  /* Easing, measured on kaib-invest.com (lib/ease.ts has the JS twins). */
+  --ease: cubic-bezier(0.25, 1, 0.3, 1); /* KAIB tab line + news row hover */
+  --ease-out: cubic-bezier(0, 0, 0.58, 1); /* KAIB `ease-out` (fade-in-section, button-ui) */
+
+  /* Layout, after KAIB's grid tokens: side margin and gutter per breakpoint. */
+  --margin: 24px; /* KAIB --layout-margin-mobile */
+  --gap: 24px;
+  --wrap: calc(100vw - 2 * var(--margin));
+  --header-h: 56px; /* KAIB --top-bar-height-mobile */
+
+  /* Vertical rhythm (brief: 64 to 96px desktop, 48 to 64px mobile). KAIB's own 150px section margin is not used. */
+  --space-section: 56px;
+  --space-block: 32px;
+  --space-head: 32px; /* heading block to content */
+
+  /* Type scale: KAIB's sizes (font-style-* tokens), mapped to the brand's two families. */
+  --fs-h1: clamp(38px, 9vw, 44px);
+  --fs-h2: 30px;
+  --fs-h3: 19px;
+  --fs-quote: 28px;
+  --fs-body: 17px;
+  --fs-small: 15px;
+  --fs-label: 13px;
+}
+@media (min-width: 481px) { :root { --margin: 32px; } }
+@media (min-width: 768px) {
+  :root { --margin: 40px; --gap: 40px; --header-h: 64px; --space-section: 72px; --fs-h2: 34px; --fs-quote: 34px; --fs-h1: 48px; }
+}
+@media (min-width: 1024px) { :root { --header-h: 64px; --space-section: 80px; } }
+@media (min-width: 1280px) {
+  :root { --margin: 60px; --header-h: 70px; --space-section: 88px; --space-block: 40px; --space-head: 40px; --fs-h1: 56px; --fs-h2: 40px; --fs-quote: 40px; --fs-body: 18px; --fs-small: 16px; }
+}
+@media (min-width: 1441px) { :root { --margin: 83px; --gap: 52px; --fs-h1: clamp(56px, 3.9vw, 64px); } }
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-stopped { overflow: hidden; }
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--ink);
+  font: 400 var(--fs-body)/1.45 "Noto Sans", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+img, video, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+h1, h2, h3, h4, p, ul, ol, figure, blockquote { margin: 0; padding: 0; }
+ul, ol { list-style: none; }
+::selection { background: var(--active); color: var(--navy); }
+
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 2px; }
+[data-tone="dark"] :focus-visible { outline-color: var(--white); }
+main:focus, #top:focus { outline: none; }
+
+.skip-link {
+  position: fixed; left: 12px; top: 12px; z-index: 2000; padding: 10px 16px; border-radius: 24px;
+  background: var(--navy); color: var(--white); font-size: var(--fs-small); transform: translateY(-160%);
+}
+.skip-link:focus { transform: none; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ---- layout primitives ---- */
+.wrap { width: 100%; padding-inline: var(--margin); margin-inline: auto; max-width: 1920px; }
+.section { padding-block: var(--space-section); }
+/* KAIB indents section intros by one sixth of the grid plus a gutter (".hero-desc", ".insight-header"). */
+.indent { padding-left: 0; }
+@media (min-width: 1024px) { .indent { padding-left: calc((100% - 5 * var(--gap)) / 6 + var(--gap)); } }
+
+/* ---- type ---- */
+.display { font-family: "Raleway", "Noto Sans", sans-serif; font-weight: 700; letter-spacing: -0.015em; }
+.h1 { font: 700 var(--fs-h1)/1.09 "Raleway", sans-serif; letter-spacing: -0.015em; } /* KAIB h1 56/61, -0.84px */
+.h2 { font: 700 var(--fs-h2)/1.22 "Raleway", sans-serif; letter-spacing: -0.015em; } /* KAIB about-us-title 40/50, -0.6px */
+.h3 { font-size: var(--fs-h3); font-weight: 550; line-height: 1.4; letter-spacing: -0.01em; } /* KAIB card title 19/26.6 */
+.lead { font-size: var(--fs-body); font-weight: 350; line-height: 1.45; color: var(--ink-2); max-width: 62ch; } /* KAIB 18/26.1, 350 */
+.small { font-size: var(--fs-small); line-height: 1.5; }
+.label { font-size: var(--fs-label); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+[data-tone="dark"] { color: var(--white); }
+[data-tone="dark"] .lead, [data-tone="dark"] .label { color: color-mix(in srgb, var(--white) 78%, var(--navy)); }
+
+/* ---- reveal start states (set before first paint by the boot script's `js` class) ----
+   GSAP sets its own start values; these guards only stop a flash before it does. data-shown lifts them. */
+.js [data-reveal="label"]:not([data-shown]),
+.js [data-reveal="heading"]:not([data-shown]),
+.js [data-reveal="card"]:not([data-shown]) { opacity: 0; }
+.js [data-reveal="image"]:not([data-shown]) { clip-path: inset(100% 0 0 0); }
+/* Hero parts wait for the preloader's handover; once html[data-intro="done"] is set the hero timeline owns them. */
+.js:not([data-intro="done"]) [data-hero-part] { opacity: 0; }
+.js:not([data-intro="done"]) [data-hero-image] { clip-path: inset(0 0 100% 0); }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+
+/* Line masks for the paragraph reveal (lib/split.ts wraps every word in .wm > .wi). */
+.wm { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.12em; margin-bottom: -0.12em; }
+.wi { display: inline-block; will-change: transform; }

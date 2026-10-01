@@ -1,0 +1,87 @@
+/* ---- Preloader: white ground (the hero's own background), the wordmark centred. ---- */
+.preloader {
+  position: fixed; inset: 0; z-index: 1500;
+  display: grid; place-items: center;
+  background: var(--white);
+  pointer-events: none;
+}
+.preloader-sign { visibility: hidden; width: min(52vw, 300px); }
+.preloader-sign .logo { width: 100%; height: auto; overflow: visible; }
+html:not(.js) .preloader { display: none; }
+
+/* ---- Header: KAIB's topbar layout without its bar (no fill, no rule). ---- */
+.site-header {
+  position: fixed; inset: 0 0 auto; z-index: 900;
+  height: var(--header-h);
+  color: var(--navy);
+  transition: transform 0.45s var(--ease), color 0.3s var(--ease-out);
+}
+.site-header.is-hidden { transform: translateY(-110%); }
+html[data-header="dark"] .site-header { color: var(--white); }
+.site-header-inner { height: 100%; display: flex; align-items: center; gap: 24px; }
+
+.brand { display: block; flex: none; }
+.brand .logo { width: 104px; height: auto; }
+@media (min-width: 1280px) { .brand .logo { width: 120px; } }
+.site-header .brand { position: relative; }
+.site-header .brand-light { position: absolute; inset: 0; opacity: 0; }
+.site-header .brand .logo { transition: opacity 0.3s var(--ease-out); }
+html[data-header="dark"] .site-header .brand-color { opacity: 0; }
+html[data-header="dark"] .site-header .brand-light { opacity: 1; }
+html.is-landing .site-header .brand { visibility: hidden; }
+
+/* KAIB topbar text nav: 15px, colour change on hover (.topbar-nav-list-text: color .2s ease-out). */
+.header-nav { display: none; margin-left: auto; }
+.header-nav ul { display: flex; gap: clamp(20px, 2.6vw, 44px); }
+.header-nav a { font-size: 15px; font-weight: 500; letter-spacing: 0.02em; text-transform: uppercase; transition: color 0.2s var(--ease-out), opacity 0.2s var(--ease-out); }
+@media (hover: hover) { .header-nav a:hover { opacity: 0.6; } }
+@media (min-width: 1100px) { .header-nav { display: block; } }
+.header-actions { display: flex; gap: 8px; margin-left: auto; }
+@media (min-width: 1100px) { .header-actions { margin-left: clamp(20px, 3vw, 48px); } }
+.header-contact { display: none; }
+@media (min-width: 640px) { .header-contact { display: inline-flex; } }
+.site-header .pill { color: inherit; border-color: color-mix(in srgb, currentColor 22%, transparent); }
+html[data-header="dark"] .site-header .pill:hover { background-color: color-mix(in srgb, var(--white) 16%, transparent); border-color: transparent; }
+
+/* ---- Menu: full screen, navy. ---- */
+.menu {
+  position: fixed; inset: 0; z-index: 1000;
+  display: flex; flex-direction: column;
+  background: var(--navy); color: var(--white);
+  visibility: hidden; clip-path: inset(0 0 100% 0);
+  overflow-y: auto;
+}
+.menu-top { height: var(--header-h); display: flex; align-items: center; justify-content: space-between; flex: none; }
+.menu-body { flex: 1; display: grid; gap: 40px; padding-block: 32px; align-content: start; }
+@media (min-width: 900px) { .menu-body { grid-template-columns: 1.1fr 1fr; padding-block: 6vh; align-content: center; } }
+.menu .label { margin-bottom: 18px; }
+.menu-big {
+  display: inline-block; padding: 6px 0;
+  font: 700 clamp(26px, 3.4vw, 44px)/1.15 "Raleway", sans-serif; letter-spacing: -0.015em;
+  transition: color 0.3s var(--ease-out), transform 0.5s var(--ease);
+}
+@media (hover: hover) { .menu-big:hover { color: color-mix(in srgb, var(--green) 55%, var(--white)); transform: translateX(8px); } }
+.menu-site { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 32px; align-content: start; }
+@media (min-width: 900px) { .menu-site { padding-top: 34px; } }
+.menu-group-title { font-size: 18px; font-weight: 600; }
+.menu-group ul { margin-top: 8px; display: grid; gap: 6px; }
+.menu-group ul a, .menu-foot a { font-size: var(--fs-small); color: color-mix(in srgb, var(--white) 75%, var(--navy)); transition: color 0.2s var(--ease-out); }
+@media (hover: hover) { .menu-group a:hover, .menu-foot a:hover { color: var(--white); } }
+.menu-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 32px; padding-block: 24px 32px; border-top: 1px solid color-mix(in srgb, var(--white) 18%, transparent); }
+.menu-foot .socials { margin-left: auto; }
+.menu .logo { width: 104px; height: auto; }
+@media (min-width: 1280px) { .menu .logo { width: 120px; } }
+
+/* ---- Footer: the live footer's content on navy. ---- */
+.site-footer { background: var(--navy); color: var(--white); padding-block: 64px 28px; }
+.footer-grid { display: grid; gap: 40px 32px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.footer-brand { grid-column: 1 / -1; }
+@media (min-width: 900px) { .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; } .footer-brand { grid-column: auto; } }
+.footer-brand .logo { width: 150px; height: auto; }
+.footer-brand address { margin-top: 24px; font-style: normal; font-size: var(--fs-small); line-height: 1.6; color: color-mix(in srgb, var(--white) 78%, var(--navy)); }
+.footer-col .label { margin-bottom: 16px; }
+.footer-col ul:not(.socials) { display: grid; gap: 8px; }
+.site-footer a { transition: color 0.2s var(--ease-out), opacity 0.2s var(--ease-out); }
+.footer-col ul:not(.socials) a, .footer-brand address a { color: color-mix(in srgb, var(--white) 86%, var(--navy)); }
+@media (hover: hover) { .footer-col ul:not(.socials) a:hover, .footer-brand address a:hover { color: var(--white); text-decoration: underline; text-underline-offset: 3px; } }
+.footer-bar { margin-top: 48px; padding-top: 20px; border-top: 1px solid color-mix(in srgb, var(--white) 18%, transparent); color: color-mix(in srgb, var(--white) 70%, var(--navy)); }

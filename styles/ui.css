@@ -1,0 +1,95 @@
+/* ------------------------------------------------------------------------------------------------
+   Pill: THE COPIED INTERACTION, kaib-invest.com `.button-ui` (components/ui.tsx has the source CSS).
+   KAIB values:  height 48px (laptop) / 54px (≥1441), radius 24 / 28px, border 1px --color-black100,
+                 label 19px medium (laptop) / clamp(21px, 1.2vw, 22px) 500 (≥1441), span padding 0 32px.
+   Hover:        background-color + border-color → --color-button-active, opacity .9
+   Press:        transform: scale(.93), opacity .9
+   Transition:   background-color .2s ease-out, border-color .2s ease-out, transform .2s ease-out
+                 (KAIB's fourth entry is misspelt "opaicty", so opacity is not animated; kept that way).
+   KAIB scopes hover to ≥1280px; here it is scoped to devices that can hover. The label size follows this site's
+   smaller type scale (17/18px) so the pills sit at the same weight as the body copy.
+   ------------------------------------------------------------------------------------------------ */
+:root {
+  --pill-dur: 0.2s;
+  --pill-h: 48px;
+  --pill-r: 24px;
+  --pill-press: 0.93;
+}
+@media (min-width: 1441px) { :root { --pill-h: 54px; --pill-r: 28px; } }
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--pill-h);
+  border: 1px solid var(--line);
+  border-radius: var(--pill-r);
+  background-color: color-mix(in srgb, var(--white) 5%, transparent); /* KAIB #ffffff0d */
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
+  color: var(--navy);
+  font-size: var(--fs-body);
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  transition:
+    background-color var(--pill-dur) var(--ease-out),
+    border-color var(--pill-dur) var(--ease-out),
+    transform var(--pill-dur) var(--ease-out);
+}
+.pill > span { padding: 0 28px; }
+@media (min-width: 1441px) { .pill > span { padding: 0 32px; } }
+@media (hover: hover) {
+  .pill:hover { background-color: var(--active); border-color: var(--active); opacity: 0.9; }
+}
+.pill:active { transform: scale(var(--pill-press)); opacity: 0.9; }
+
+/* Variants keep the same behaviour; only the resting and hover colours change. */
+.pill-solid { background-color: var(--navy); border-color: var(--navy); color: var(--white); }
+@media (hover: hover) { .pill-solid:hover { background-color: var(--blue); border-color: var(--blue); } }
+.pill-dark { border-color: color-mix(in srgb, var(--white) 35%, transparent); color: var(--white); }
+@media (hover: hover) { .pill-dark:hover { background-color: color-mix(in srgb, var(--white) 16%, transparent); border-color: color-mix(in srgb, var(--white) 16%, transparent); } }
+.pill-sm { --pill-h: 40px; --pill-r: 20px; font-size: 15px; }
+.pill-sm > span { padding: 0 18px; }
+
+/* KAIB's round chevron button: 36px circle, 1px --color-card-button-border (#a6acb2). */
+.chevron {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  flex: none;
+  border: 1px solid var(--line-2);
+  border-radius: 50%;
+  color: var(--navy);
+  transition: background-color 0.5s var(--ease), border-color 0.5s var(--ease), color 0.5s var(--ease);
+}
+.chevron svg { transition: transform 0.5s var(--ease); }
+
+/* Small underlined link (row footers). */
+.text-link {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: var(--fs-small);
+  font-weight: 550;
+  color: var(--blue);
+  background: linear-gradient(currentColor, currentColor) 0 100% / 100% 1px no-repeat;
+  padding-bottom: 2px;
+  transition: background-size 0.5s var(--ease);
+}
+@media (hover: hover) { .text-link:hover { background-size: 0% 1px; background-position: 100% 100%; } }
+
+/* Photography. Kept inside the palette with a light treatment: a touch less saturation and a navy veil
+   (multiply, 10%), so greens and skies sit with navy, green and blue without becoming duotone. */
+.photo { position: relative; overflow: hidden; margin: 0; background: var(--card); }
+.photo img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.88) contrast(1.02); }
+.photo::after { content: ""; position: absolute; inset: 0; background: var(--navy); mix-blend-mode: multiply; opacity: 0.1; pointer-events: none; }
+
+.socials { display: flex; gap: 10px; }
+.socials a { display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; border: 1px solid currentColor; transition: background-color 0.3s var(--ease-out), color 0.3s var(--ease-out); }
+@media (hover: hover) { .socials a:hover { background-color: var(--white); color: var(--navy); } }
+
+/* Narrow screens: long labels wrap inside the pill instead of overflowing it. */
+@media (max-width: 479px) {
+  .pill:not(.pill-sm) { max-width: 100%; height: auto; min-height: var(--pill-h); white-space: normal; text-align: center; line-height: 1.25; padding-block: 12px; }
+}
