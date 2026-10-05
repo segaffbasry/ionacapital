@@ -26,6 +26,10 @@ export function Pill({ href, children, tone = "light", className = "", reveal = 
   return <a href={href} className={cls} onClick={onClick} {...data} {...linkProps(href ?? "")} {...rest}><span>{children}</span></a>;
 }
 
+export function Arrow() {
+  return <svg className="arrow" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M1 6h9.5M6.5 2 10.5 6l-4 4" fill="none" stroke="currentColor" strokeWidth="1.4" /></svg>;
+}
+
 /* KAIB's round card button (insight-news-button / chevron-right.svg in a 1px #a6acb2 circle). */
 export function Chevron({ className = "" }: { className?: string }) {
   return <span className={`chevron ${className}`} aria-hidden="true">

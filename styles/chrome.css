@@ -30,40 +30,38 @@ html[data-header="dark"] .site-header .brand-color { opacity: 0; }
 html[data-header="dark"] .site-header .brand-light { opacity: 1; }
 html.is-landing .site-header .brand { visibility: hidden; }
 
-/* Elevated header (feedback round 1): the nav floats as one glass pill (KAIB's topbar links, Star's glass pill nav),
-   with a solid Contact pill and a glass Menu pill beside it. Glass = translucent fill + 16px backdrop blur + hairline;
-   it reads on the hero photo and on white sections alike. Colours follow html[data-header]. */
-.site-header { --glass: color-mix(in srgb, var(--white) 86%, transparent); --glass-line: var(--line); --glass-hover: color-mix(in srgb, var(--navy) 7%, transparent); }
-html[data-header="dark"] .site-header { --glass: color-mix(in srgb, var(--white) 12%, transparent); --glass-line: color-mix(in srgb, var(--white) 24%, transparent); --glass-hover: color-mix(in srgb, var(--white) 16%, transparent); }
-@media (min-width: 1280px) { .site-header { top: 10px; } }
-
-.header-nav { display: none; margin-inline: auto; }
-.header-nav ul {
-  display: flex; align-items: center; gap: 2px; padding: 4px;
-  border: 1px solid var(--glass-line); border-radius: 999px;
-  background: var(--glass); -webkit-backdrop-filter: blur(16px) saturate(1.2); backdrop-filter: blur(16px) saturate(1.2);
-  transition: background-color 0.3s var(--ease-out), border-color 0.3s var(--ease-out);
-}
-.header-nav a {
-  display: inline-flex; align-items: center; height: 36px; padding: 0 16px; border-radius: 999px;
-  font-size: 14px; font-weight: 500; letter-spacing: 0.01em; white-space: nowrap;
-  transition: background-color 0.2s var(--ease-out); /* KAIB .topbar-nav-list-text: .2s ease-out */
-}
-@media (hover: hover) { .header-nav a:hover { background-color: var(--glass-hover); } }
-@media (min-width: 1100px) { .header-nav { display: block; } }
-.header-actions { display: flex; gap: 8px; margin-left: auto; }
-@media (min-width: 1100px) { .header-actions { margin-left: 0; } }
-.header-contact { display: none; }
-@media (min-width: 640px) { .header-contact { display: inline-flex; } }
-.site-header .pill { -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); }
-.site-header .header-menu { background-color: var(--glass); border-color: var(--glass-line); color: inherit; }
-@media (hover: hover) { .site-header .header-menu:hover { background-color: var(--glass-hover); border-color: var(--glass-line); } }
-.site-header .header-contact { background-color: var(--navy); border-color: var(--navy); color: var(--white); }
+/* Clean header (feedback round 2, after the Voltwise demo): logo left; a solid "Contact us" pill and a text "Menu"
+   with two lines right. No nav bar, no boxes. Over white sections a soft scrim fades in behind it once scrolled. */
+.site-header .brand .logo { width: clamp(112px, 9.5vw, 148px); }
+.header-actions { display: flex; align-items: center; gap: clamp(16px, 2.4vw, 36px); margin-left: auto; }
+.header-contact { --pill-h: 46px; --pill-r: 12px; font-size: 16px; font-weight: 550; }
+.header-contact > span { display: inline-flex; align-items: center; gap: 10px; padding: 0 22px; }
+.header-contact .arrow { transition: transform 0.35s var(--ease); }
+@media (hover: hover) { .header-contact:hover .arrow { transform: translateX(3px); } }
+.site-header .header-contact { background-color: var(--navy); border-color: var(--navy); color: var(--white); -webkit-backdrop-filter: none; backdrop-filter: none; }
 html[data-header="dark"] .site-header .header-contact { background-color: var(--white); border-color: var(--white); color: var(--navy); }
 @media (hover: hover) {
   .site-header .header-contact:hover { background-color: var(--blue); border-color: var(--blue); }
   html[data-header="dark"] .site-header .header-contact:hover { background-color: var(--active); border-color: var(--active); }
 }
+@media (max-width: 639px) { .header-contact { display: none; } }
+
+.menu-toggle { display: inline-flex; align-items: center; gap: 12px; padding: 10px 0; font-size: 16px; font-weight: 500; color: inherit; }
+.menu-lines { display: grid; gap: 6px; width: 26px; }
+.menu-lines i { display: block; height: 1.5px; background: currentColor; transition: transform 0.35s var(--ease); }
+.menu-lines i:last-child { width: 70%; margin-left: auto; }
+@media (hover: hover) { .menu-toggle:hover .menu-lines i:last-child { transform: scaleX(1.43); transform-origin: right; } }
+.menu-x { position: relative; width: 20px; height: 20px; }
+.menu-x::before, .menu-x::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1.5px; background: currentColor; transform: rotate(45deg); }
+.menu-x::after { transform: rotate(-45deg); }
+
+/* Scrim: only once scrolled, and only over light sections. */
+.site-header::before {
+  content: ""; position: absolute; inset: 0 0 -24px; z-index: -1; pointer-events: none; opacity: 0;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--white) 94%, transparent) 55%, transparent);
+  transition: opacity 0.35s var(--ease-out);
+}
+html[data-header="light"] .site-header.is-scrolled::before { opacity: 1; }
 
 /* ---- Menu: full screen, navy. ---- */
 .menu {
@@ -107,17 +105,3 @@ html[data-header="dark"] .site-header .header-contact { background-color: var(--
 .footer-col ul:not(.socials) a, .footer-brand address a { color: color-mix(in srgb, var(--white) 86%, var(--navy)); }
 @media (hover: hover) { .footer-col ul:not(.socials) a:hover, .footer-brand address a:hover { color: var(--white); text-decoration: underline; text-underline-offset: 3px; } }
 .footer-bar { margin-top: 48px; padding-top: 20px; border-top: 1px solid color-mix(in srgb, var(--white) 18%, transparent); color: color-mix(in srgb, var(--white) 70%, var(--navy)); }
-@media (min-width: 1100px) {
-  .site-header-inner { display: grid; grid-template-columns: 1fr auto 1fr; }
-  .header-actions { justify-self: end; }
-  .site-header .brand { justify-self: start; }
-}
-/* Scrolled: the logo joins the glass language, so it stays legible over any section it floats above. */
-.site-header .brand { border-radius: 999px; transition: background-color 0.3s var(--ease-out), padding 0.3s var(--ease-out), border-color 0.3s var(--ease-out); border: 1px solid transparent; }
-.site-header.is-scrolled .brand {
-  padding: 7px 16px; margin-left: -17px;
-  background: var(--glass); border-color: var(--glass-line);
-  -webkit-backdrop-filter: blur(16px) saturate(1.2); backdrop-filter: blur(16px) saturate(1.2);
-}
-.site-header.is-scrolled .brand-light { inset: 7px 16px; }
-@media (max-width: 767px) { .site-header.is-scrolled .brand { margin-left: -12px; padding: 6px 11px; } .site-header.is-scrolled .brand-light { inset: 6px 11px; } }

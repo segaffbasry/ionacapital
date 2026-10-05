@@ -24,7 +24,7 @@ export const hero = {
   lead: home.hero.lead,
   ctas: home.hero.ctas as Link[],
   // Full bleed (feedback round 1): Gravel Pit Biogas from the air, a wide sky over the two digester domes.
-  image: media("hero", "Aerial view of Gravel Pit Biogas: two digester domes and a lagoon among fields under a wide sky", "50% 68%"),
+  image: media("hero", "Aerial view of Gravel Pit Biogas: two digester domes and a lagoon among fields under a wide sky", "50% 32%"),
   // The live hero lays the Kanadevia ridge graphic along the bottom of its photo (post-7.css background overlay).
   ridge: "/media/ridge.png",
   caption: "Gravel Pit Biogas", // one of the 21 assets on /investments/

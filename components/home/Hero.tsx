@@ -3,15 +3,15 @@
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
 import "@/components/motion";
-import { Photo, Pill, reducedMotion } from "@/components/ui";
+import { Arrow, Photo, Pill, reducedMotion } from "@/components/ui";
 import { hero } from "@/lib/content";
 import { splitLines } from "@/lib/split";
 
-/* Full-bleed hero (feedback round 1: "the header just needs to be elevated", pointing at the Voltwise demo).
+/* Full-bleed hero (feedback rounds 1 and 2: "elevated", "more of a clean header like" the Voltwise demo).
    The whole first screen is the company's own aerial of Gravel Pit Biogas under a wide sky, held in the palette by
-   a navy veil that deepens towards the copy. The headline, lead and two pills sit bottom-left in white; the
+   a navy veil. The headline, lead and two buttons sit centred in white, the domes below them; the
    Kanadevia ridge graphic runs along the foot of the photo, exactly as the live hero overlays it, and the plant's
-   name sits bottom-right as a caption. The header floats over it as glass pills (styles/chrome.css).
+   name sits bottom-right as a caption. The header is just logo, Contact us and Menu (styles/chrome.css).
    Entrance (waits for `intro:done` from the preloader, whose navy ground fades straight into the veil): the photo
    settles from 108% to 100%, the ridge rises in, the headline's lines rise out of their masks, then the lead,
    pills, caption and header. This and the preloader are the only heavier moves on the page. */
@@ -51,7 +51,7 @@ export function Hero() {
         <h1 id="hero-title" className="hero-title" data-hero-part>{hero.title}</h1>
         <p className="hero-lead" data-hero-part>{hero.lead}</p>
         <div className="hero-actions">
-          {hero.ctas.map((c, i) => <Pill key={c.href} href={c.href} tone={i === 0 ? "white" : "glass"} reveal={false} data-hero-part>{c.label}</Pill>)}
+          {hero.ctas.map((c, i) => <Pill key={c.href} href={c.href} tone={i === 0 ? "white" : "glass"} reveal={false} data-hero-part>{c.label} <Arrow /></Pill>)}
         </div>
       </div>
       <p className="hero-caption" data-hero-part>{hero.caption}</p>

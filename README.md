@@ -37,6 +37,17 @@ npm run logo       # rebuild lib/logo.ts, public/brand/*.svg and app/icon.svg fr
 
 Page heights after the round: 1440: 6,662px (7.4 viewports), 768: 7,294px, 375: 7,702px.
 
+## Feedback round 2 (2026-10-05)
+
+> "More of clean header like this" (screenshot of the Voltwise demo's first screen).
+
+| Change | Detail |
+|---|---|
+| Header | Now logo, a solid "Contact us →" pill (white over the hero, navy over white) and a text "Menu" with two lines, as on Voltwise. The glass nav pill and glass logo pill from round 1 are gone; the five site links live in the full-screen menu. Header height is 96px (laptop) / 104px (desktop) with a larger logo (up to 148px). Once scrolled over white sections, a soft white scrim fades in behind it, with no bar or box. The menu's Close is the same text + X control. |
+| Hero | Copy is centred like Voltwise: Raleway 600 headline `clamp(44px, 6.6vw, 104px)`, lead, and two larger buttons (56px, 14px radius, with arrows). The photo is framed (`object-position: 50% 32%`) so the domes sit at the foot of the screen below the buttons. The veil is a soft navy pool behind the copy, and the ridge glow is the bottom 14%. |
+
+Checks after the round (production): no console errors and no overflow at 375 / 768 / 1440; Tab order is Skip, Logo, Contact us, Menu, Who We Are; the menu traps focus and Esc returns focus to Menu; `intro:done` at 1.33s, preloader gone 1.77s; no dashes.
+
 ## Recon (Phase 1)
 
 **Live homepage, every visible section** (Elementor 4.3, Hello theme):

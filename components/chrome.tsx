@@ -5,7 +5,7 @@ import type { ReactNode } from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Logo } from "@/components/Logo";
 import { focusOverlay, usePageMotion } from "@/components/motion";
-import { Pill, SocialIcon, linkProps, reducedMotion } from "@/components/ui";
+import { Arrow, Pill, SocialIcon, linkProps, reducedMotion } from "@/components/ui";
 import { footer } from "@/lib/content";
 import { contact, nav, onPage, socials } from "@/lib/site";
 
@@ -39,7 +39,7 @@ function Menu({ open, close, trigger }: { open: boolean; close: () => void; trig
   return <div className="menu" id="site-menu" ref={root} role="dialog" aria-modal="true" aria-label="Site menu" aria-hidden={!open} inert={!open} data-lenis-prevent data-tone="dark">
     <div className="menu-top wrap">
       <a href="#top" className="brand" onClick={close} aria-label="Kanadevia Inova Capital, back to the top"><Logo id="menu" tone="light" title="" /></a>
-      <Pill as="button" tone="dark" className="pill-sm" onClick={close} reveal={false}>Close</Pill>
+      <button className="menu-toggle" onClick={close}><span>Close</span><span className="menu-x" aria-hidden="true" /></button>
     </div>
     <div className="menu-body wrap">
       <nav className="menu-page" aria-label="On this page">
@@ -62,7 +62,8 @@ function Menu({ open, close, trigger }: { open: boolean; close: () => void; trig
 }
 
 /* Frameless header after KAIB's topbar (logo left, text nav, pill buttons right) without its bar: no fill, no rule.
-   The nav floats as a glass pill (styles/chrome.css). Its colour follows the section underneath (motion.tsx sets
+   After the Voltwise demo (feedback round 2): logo, a solid "Contact us" pill and a text "Menu" with two lines;
+   the site nav lives in the full-screen menu. Its colour follows the section underneath (motion.tsx sets
    html[data-header]); it slides away on the way down and returns on the way up. */
 function Header() {
   const [open, setOpen] = useState(false);
@@ -75,7 +76,7 @@ function Header() {
     let last = window.scrollY;
     const onScroll = () => {
       const y = window.scrollY, delta = y - last;
-      // Past the top, the logo gets its own glass pill (styles/chrome.css) so it never sits bare on content.
+      // Past the top, a soft scrim fades in behind the header (styles/chrome.css) so it never sits bare on content.
       el.classList.toggle("is-scrolled", y > 40);
       if (y < 80) { el.classList.remove("is-hidden"); last = y; return; }
       if (Math.abs(delta) < 6) return;
@@ -96,13 +97,11 @@ function Header() {
           <Logo id="head" tone="color" title="" className="brand-color" />
           <Logo id="head-light" tone="light" title="" className="brand-light" />
         </a>
-        <nav className="header-nav" aria-label="Main" data-hero-part>
-          <ul>{nav.map((g) => <li key={g.href}><a href={g.href} {...linkProps(g.href)}>{g.label}</a></li>)}</ul>
-        </nav>
         <div className="header-actions" data-hero-part>
-          <Pill href={contact.href} className="pill-sm header-contact" reveal={false}>Contact</Pill>
-          <Pill as="button" className="pill-sm header-menu" reveal={false} aria-haspopup="dialog" aria-expanded={open} aria-controls="site-menu"
-            onClick={(e) => { setTrigger(e.currentTarget); setOpen(true); }}>Menu</Pill>
+          <Pill href={contact.href} className="header-contact" reveal={false}>Contact us <Arrow /></Pill>
+          <button className="menu-toggle" aria-haspopup="dialog" aria-expanded={open} aria-controls="site-menu" onClick={(e) => { setTrigger(e.currentTarget); setOpen(true); }}>
+            <span>Menu</span><span className="menu-lines" aria-hidden="true"><i /><i /></span>
+          </button>
         </div>
       </div>
     </header>

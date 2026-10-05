@@ -61,9 +61,9 @@
 @media (min-width: 768px) {
   :root { --margin: 40px; --gap: 40px; --header-h: 64px; --space-section: 72px; --fs-h2: 34px; --fs-quote: 34px; --fs-h1: 48px; }
 }
-@media (min-width: 1024px) { :root { --header-h: 64px; --space-section: 80px; } }
+@media (min-width: 1024px) { :root { --header-h: 96px; --space-section: 80px; } }
 @media (min-width: 1280px) {
-  :root { --margin: 60px; --header-h: 70px; --space-section: 88px; --space-block: 40px; --space-head: 40px; --fs-h1: 56px; --fs-h2: 40px; --fs-quote: 40px; --fs-body: 18px; --fs-small: 16px; }
+  :root { --margin: 60px; --header-h: 104px; --space-section: 88px; --space-block: 40px; --space-head: 40px; --fs-h1: 56px; --fs-h2: 40px; --fs-quote: 40px; --fs-body: 18px; --fs-small: 16px; }
 }
 @media (min-width: 1441px) { :root { --margin: 83px; --gap: 52px; --fs-h1: clamp(56px, 3.9vw, 64px); } }
 

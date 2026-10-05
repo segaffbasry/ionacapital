@@ -16,47 +16,48 @@
 .hero-photo { position: absolute; inset: 0; z-index: -3; background: var(--navy); }
 .hero-photo img { filter: saturate(0.92); }
 .hero-photo::after { opacity: 0.18; } /* the navy multiply veil from .photo, stronger here */
-/* Navy veil: deepest behind the copy (in the sky, top-left) and under the header; the domes stay clear. */
+/* Navy veil: an even wash plus a soft pool behind the centred copy; the domes at the foot stay clear. */
 .hero-veil {
   position: absolute; inset: 0; z-index: -2; pointer-events: none;
   background:
-    linear-gradient(180deg, color-mix(in srgb, var(--navy) 70%, transparent) 0%, color-mix(in srgb, var(--navy) 30%, transparent) 45%, transparent 62%),
-    linear-gradient(90deg, color-mix(in srgb, var(--navy) 50%, transparent) 0%, transparent 65%);
+    radial-gradient(ellipse 60% 45% at 50% 48%, color-mix(in srgb, var(--navy) 42%, transparent), transparent 75%),
+    linear-gradient(180deg, color-mix(in srgb, var(--navy) 55%, transparent) 0%, color-mix(in srgb, var(--navy) 25%, transparent) 55%, transparent 80%);
 }
-/* The live hero's overlay: the Kanadevia ridge graphic is a soft green-to-blue glow rising from the foot of the photo
-   (alpha 0 to 1 over its height). Kept low so it washes the fields, not the domes. */
+/* The live hero's overlay: the Kanadevia ridge graphic, a soft green-to-blue glow rising from the foot of the photo. */
 .hero-ridge {
   position: absolute; left: 0; right: 0; bottom: 0; z-index: -1; pointer-events: none;
-  height: 30%; opacity: 0.9;
+  height: 14%; opacity: 0.85;
   background-repeat: no-repeat; background-size: 100% 100%; background-position: 50% 100%;
 }
+/* Centred, after the Voltwise hero (feedback round 2): headline, line, two buttons in the middle of the screen. */
 .hero-inner {
   position: relative; width: 100%; min-height: 100svh;
-  display: flex; flex-direction: column; justify-content: space-between; gap: 32px;
-  padding-top: calc(var(--header-h) + clamp(40px, 9vh, 110px));
-  padding-bottom: clamp(24px, 4vh, 40px);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+  padding-top: var(--header-h); padding-bottom: clamp(64px, 12vh, 140px);
 }
-.hero-copy { max-width: 760px; }
+.hero-copy { max-width: 980px; display: flex; flex-direction: column; align-items: center; }
 .hero-title {
-  font: 700 clamp(42px, 5.6vw, 84px)/1.02 "Raleway", sans-serif; letter-spacing: -0.025em;
-  color: var(--white); max-width: 12ch; text-wrap: balance;
+  font: 600 clamp(44px, 6.6vw, 104px)/1 "Raleway", sans-serif; letter-spacing: -0.03em;
+  color: var(--white); max-width: 11ch; text-wrap: balance;
 }
 .hero-title .wm { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.08em; margin-bottom: -0.08em; }
 .hero-title .wi { display: inline-block; }
 .hero-lead {
-  margin-top: clamp(16px, 2vw, 24px); max-width: 40ch;
-  font-size: clamp(17px, 1.35vw, 20px); font-weight: 400; line-height: 1.45;
-  color: color-mix(in srgb, var(--white) 88%, var(--navy));
+  margin-top: clamp(18px, 2.2vw, 28px); max-width: 44ch;
+  font-size: clamp(17px, 1.4vw, 21px); font-weight: 400; line-height: 1.45;
+  color: color-mix(in srgb, var(--white) 90%, var(--navy));
 }
-.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: clamp(24px, 3vw, 40px); }
+.hero-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 16px; margin-top: clamp(28px, 3.4vw, 44px); }
+.hero-actions .pill { --pill-h: 56px; --pill-r: 14px; font-weight: 550; }
+.hero-actions .pill > span { display: inline-flex; align-items: center; gap: 10px; }
 .hero-caption {
-  flex: none; align-self: flex-end; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase;
+  position: absolute; right: var(--margin); bottom: clamp(20px, 3vh, 32px); font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase;
   color: color-mix(in srgb, var(--white) 80%, var(--navy));
   display: flex; align-items: center; gap: 10px;
 }
 .hero-caption::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--brand-gradient); }
 @media (max-width: 767px) {
-  .hero-photo img { object-position: 30% 68% !important; } /* keep the domes in frame on portrait screens */
+  .hero-photo img { object-position: 30% 62% !important; } /* keep the domes in frame on portrait screens */
   .hero-caption { display: none; }
 }
 
