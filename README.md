@@ -23,6 +23,20 @@ npm run logo       # rebuild lib/logo.ts, public/brand/*.svg and app/icon.svg fr
 
 `next build` generates 4 static pages: `/`, `/_not-found` and `/icon.svg` in the route table, plus Next's internal page. There are no archive or detail pages.
 
+## Feedback round 1 (2026-10-05)
+
+> "I like the loading screen, but the header page isn't right … theirs is cleaner. Take more inspo from the Voltwise one … I think the header just needs to be elevated."
+
+| Change | Detail |
+|---|---|
+| Full-bleed hero | The framed KAIB split hero is replaced by the whole first screen as photography (as on the Voltwise demo). The photo is now `Gravel-Pit-scaled.jpg` (2560 × 2335, the largest real aerial on the site, also article 3's featured image): a wide sky over the two digester domes. Cut at 2400 / 1600 / 800px. |
+| Copy in the sky | Headline (Raleway 700, `clamp(42px, 5.6vw, 84px)`), lead and pills sit top-left in the sky so the domes stay clear. A navy veil deepens behind the copy and the header. White primary pill + frosted glass secondary. "Gravel Pit Biogas" captions the photo bottom-right. |
+| Brand glow | The Kanadevia ridge graphic is a soft green-to-blue alpha fade, not a silhouette; it now washes the bottom 30% of the photo, as the live hero uses it. |
+| Elevated header | The five nav links float in one centred glass pill (translucent fill, 16px backdrop blur, hairline, 36px pill links). Contact is solid (white over the hero, navy over white), Menu is glass. Once scrolled, the logo gets the same glass pill so it never sits bare on content. Colours still follow `html[data-header]`. |
+| Preloader | Ground is now navy with the white wordmark (the hero's veil colour), and it lands on the header's white logo, so the hand-over into the dark hero shows no colour jump. Build and timing unchanged: production `intro:done` 1.31s, gone 1.77s. |
+
+Page heights after the round: 1440: 6,662px (7.4 viewports), 768: 7,294px, 375: 7,702px.
+
 ## Recon (Phase 1)
 
 **Live homepage, every visible section** (Elementor 4.3, Hello theme):
@@ -79,7 +93,7 @@ Neutrals are `color-mix()` tints of navy (`--ink-2` 84%, `--ink-3` 78%, `--line`
 
 | # | Section | Look (KAIB pattern) | Live items | Built | Notes |
 |---|---|---|---|---|---|
-| 1 | Hero `[data-hero]` | headline + subtitle + 2 pills left, large 1px-framed media right | 1 H1, 1 lead, 2 CTAs, 1 photo, ridge | all | Photo: `VILE4778.jpg` (same valley and domes as the live `Iona-Head.jpg`, taller crop). Ridge overlay as live. |
+| 1 | Hero `[data-hero]` | full-bleed photo, copy top-left, glass header (feedback round 1) | 1 H1, 1 lead, 2 CTAs, 1 photo, ridge | all | Photo: `Gravel-Pit-scaled.jpg`. Ridge overlay as live. |
 | 2 | Purpose `#purpose` | indented statement, two photos, label \| text rows on hairlines | 1 quote | quote + 2 About paragraphs + 2 photos | |
 | 3 | Investment Focus `#focus` | title left / subtitle + text right, then one grey card per service with image, title, text and round chevron | (button target) | 4 value points, 3 sector cards, 1 CTA | Sector text: each page's own paragraph about the firm's work (Bioenergy: its first two paragraphs). |
 | 4 | Investments `#investments` | photo + heading/text, then ruled rows | (nav target) | 3 facts, 21 of 21 assets, 1 CTA | Facts are published figures: 17 operating plants (Wardley article, Oct 2025), "unlevered returns of 10% +" and "PRI A rating across all categories" (/sustainable-investment-focus/). All 21 assets are shown: they are one-line names in a 3-column ruled list (7 rows), shorter than a capped list plus explanation. |
@@ -196,7 +210,7 @@ All downloaded from ionacapital.co.uk by `scripts/media.py` and cut to 1600 / 80
 
 | File | Source upload | Used on the live site at |
 |---|---|---|
-| `hero` | `2021/07/VILE4778.jpg` | /sustainable-investing/ banner |
+| `hero` (2400/1600/800) | `2025/01/Gravel-Pit-scaled.jpg` | article 3 featured image |
 | `ridge.png` | `2025/04/Kanadevia_graphic_element_RGB1920px.png` | homepage hero overlay |
 | `purpose` | `2021/11/Sustainable-Investment-Focus.jpg` | /sustainable-investment-focus/ banner |
 | `team` | `2021/07/Iona_Office-22-scaled-e1680193363915.jpg` | /iona-team/ banner |

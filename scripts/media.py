@@ -20,7 +20,8 @@ U = "https://ionacapital.co.uk/wp-content/uploads/"
 
 # name: (upload path, where the live site uses it)
 SOURCES = {
-    "hero": ("2021/07/VILE4778.jpg", "/sustainable-investing/ banner: the same valley and digester domes as the live homepage hero, taller crop"),
+    # Full-bleed hero (feedback round 1): the largest real aerial on the site, a wide sky over the Gravel Pit domes.
+    "hero": ("2025/01/Gravel-Pit-scaled.jpg", "featured image of the Kanadevia Inova / Iona Capital acquisition article (2560x2335)"),
     "purpose": ("2021/11/Sustainable-Investment-Focus.jpg", "/sustainable-investment-focus/ banner"),
     "bioenergy": ("2021/11/Brocklesby-Biogas-Aerial.jpg", "/bioenergy/ Brocklesby Biogas case study"),
     "efw": ("2021/11/Energy-from-Waste-Bridgwater.jpg", "/energy-from-waste/ Bridgwater Resource Recovery case study"),
@@ -44,9 +45,12 @@ def fetch(path):
     return local
 
 
+WIDTHS = {"hero": (2400, 1600, 800)}  # the full-bleed hero also gets a 2400px cut for large retina screens
+
+
 def cut(name, path):
     im = Image.open(fetch(path)).convert("RGB")
-    for width in (1600, 800):
+    for width in WIDTHS.get(name, (1600, 800)):
         out = im.copy()
         if out.width > width:
             out = out.resize((width, round(out.height * width / out.width)), Image.LANCZOS)

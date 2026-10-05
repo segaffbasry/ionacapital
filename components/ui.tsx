@@ -17,7 +17,7 @@ export const linkProps = (href: string) => (href.startsWith("http") ? { target: 
    styles/ui.css (.pill): same properties, durations and curve (--pill-dur, --ease-out), colours swapped for palette
    tints. KAIB misspells "opacity" in its transition list, so its opacity change is instant; that is kept. */
 export function Pill({ href, children, tone = "light", className = "", reveal = true, onClick, as = "a", ...rest }: {
-  href?: string; children: ReactNode; tone?: "light" | "solid" | "dark"; className?: string; reveal?: boolean;
+  href?: string; children: ReactNode; tone?: "light" | "solid" | "dark" | "white" | "glass"; className?: string; reveal?: boolean;
   onClick?: (event: React.MouseEvent<HTMLElement>) => void; as?: "a" | "button";
 } & Record<string, unknown>) {
   const cls = `pill pill-${tone} ${className}`;
@@ -38,11 +38,11 @@ export function SocialIcon({ icon, size = 18 }: { icon: BrandIcon; size?: number
 }
 
 /* Photography: a 2-width srcset, the palette treatment (styles/ui.css .photo) and an optional parallax wrapper. */
-export function Photo({ media, sizes, className = "", priority = false, parallax = false, reveal = true }: {
-  media: Media; sizes: string; className?: string; priority?: boolean; parallax?: boolean; reveal?: boolean;
+export function Photo({ media, sizes, className = "", priority = false, parallax = false, reveal = true, large = false }: {
+  media: Media; sizes: string; className?: string; priority?: boolean; parallax?: boolean; reveal?: boolean; large?: boolean;
 }) {
   return <figure className={`photo ${className}`} data-reveal={reveal ? "image" : undefined} data-parallax={parallax ? "" : undefined}>
     {/* eslint-disable-next-line @next/next/no-img-element */}
-    <img src={`${media.src}-1600.jpg`} srcSet={srcSet(media)} sizes={sizes} alt={media.alt} loading={priority ? "eager" : "lazy"} fetchPriority={priority ? "high" : undefined} decoding="async" style={media.position ? { objectPosition: media.position } : undefined} />
+    <img src={`${media.src}-1600.jpg`} srcSet={srcSet(media, large)} sizes={sizes} alt={media.alt} loading={priority ? "eager" : "lazy"} fetchPriority={priority ? "high" : undefined} decoding="async" style={media.position ? { objectPosition: media.position } : undefined} />
   </figure>;
 }

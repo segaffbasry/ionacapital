@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false, nocache: true, googleBot: { index: false, follow: false } },
 };
 
-export const viewport: Viewport = { themeColor: "#ffffff" };
+export const viewport: Viewport = { themeColor: "#004961" };
 
 /* `js` (and the preloader's `is-loading`/`is-landing`) is set before first paint, unless reduced motion is requested,
    so reveal targets can start hidden without a flash. Without JavaScript the classes are never added and everything
@@ -24,7 +24,7 @@ const boot = "if('scrollRestoration' in history)history.scrollRestoration='manua
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en-GB" data-header="light" suppressHydrationWarning>
+    <html lang="en-GB" data-header="dark" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: boot }} />
         <script dangerouslySetInnerHTML={{ __html: posthogSnippet }} />

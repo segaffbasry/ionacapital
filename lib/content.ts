@@ -16,17 +16,18 @@ export type Link = { label: string; href: string };
 export type Media = { src: string; alt: string; position?: string };
 
 const media = (name: string, alt: string, position?: string): Media => ({ src: `/media/${name}`, alt, position });
-export const srcSet = (m: Media) => `${m.src}-800.jpg 800w, ${m.src}-1600.jpg 1600w`;
+export const srcSet = (m: Media, large = false) => `${m.src}-800.jpg 800w, ${m.src}-1600.jpg 1600w${large ? `, ${m.src}-2400.jpg 2400w` : ""}`;
 
 /* 1. Hero: the live H1, lead and both buttons, verbatim. */
 export const hero = {
   title: home.hero.title, // "Sustainable Infrastructure Investment"
   lead: home.hero.lead,
   ctas: home.hero.ctas as Link[],
-  image: media("hero", "Anaerobic digestion domes in a green valley below wooded hills", "50% 62%"),
-  // The live hero lays the Kanadevia ridge graphic over the bottom of this landscape (post-7.css background overlay).
+  // Full bleed (feedback round 1): Gravel Pit Biogas from the air, a wide sky over the two digester domes.
+  image: media("hero", "Aerial view of Gravel Pit Biogas: two digester domes and a lagoon among fields under a wide sky", "50% 68%"),
+  // The live hero lays the Kanadevia ridge graphic along the bottom of its photo (post-7.css background overlay).
   ridge: "/media/ridge.png",
-  caption: "Kanadevia Inova Capital Ltd.",
+  caption: "Gravel Pit Biogas", // one of the 21 assets on /investments/
 };
 
 /* 2. Purpose: the homepage's own "Purpose Statement" quote, with the two About paragraphs the "Who We Are" button leads to. */

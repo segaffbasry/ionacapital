@@ -62,8 +62,8 @@ function Menu({ open, close, trigger }: { open: boolean; close: () => void; trig
 }
 
 /* Frameless header after KAIB's topbar (logo left, text nav, pill buttons right) without its bar: no fill, no rule.
-   Its colour follows the section underneath (motion.tsx sets html[data-header]); it slides away on the way down
-   and returns on the way up. */
+   The nav floats as a glass pill (styles/chrome.css). Its colour follows the section underneath (motion.tsx sets
+   html[data-header]); it slides away on the way down and returns on the way up. */
 function Header() {
   const [open, setOpen] = useState(false);
   const [trigger, setTrigger] = useState<HTMLElement | null>(null);
@@ -75,6 +75,8 @@ function Header() {
     let last = window.scrollY;
     const onScroll = () => {
       const y = window.scrollY, delta = y - last;
+      // Past the top, the logo gets its own glass pill (styles/chrome.css) so it never sits bare on content.
+      el.classList.toggle("is-scrolled", y > 40);
       if (y < 80) { el.classList.remove("is-hidden"); last = y; return; }
       if (Math.abs(delta) < 6) return;
       el.classList.toggle("is-hidden", delta > 0 && !document.documentElement.classList.contains("overlay-open"));
@@ -99,7 +101,7 @@ function Header() {
         </nav>
         <div className="header-actions" data-hero-part>
           <Pill href={contact.href} className="pill-sm header-contact" reveal={false}>Contact</Pill>
-          <Pill as="button" className="pill-sm" reveal={false} aria-haspopup="dialog" aria-expanded={open} aria-controls="site-menu"
+          <Pill as="button" className="pill-sm header-menu" reveal={false} aria-haspopup="dialog" aria-expanded={open} aria-controls="site-menu"
             onClick={(e) => { setTrigger(e.currentTarget); setOpen(true); }}>Menu</Pill>
         </div>
       </div>

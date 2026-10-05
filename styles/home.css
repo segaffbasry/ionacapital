@@ -7,27 +7,58 @@
 @media (min-width: 1024px) { .split-head { grid-template-columns: 1fr 2fr; gap: var(--gap); align-items: start; } }
 .split-head-body .h3 { color: var(--navy); }
 
-/* ---- 1. Hero ---- */
-.hero { padding-top: calc(var(--header-h) + 24px); padding-bottom: var(--space-section); }
-.hero-grid { display: grid; gap: 32px; }
-.hero-copy { display: flex; flex-direction: column; justify-content: flex-end; }
-.hero-title { max-width: 11ch; color: var(--navy); }
+/* ---- 1. Hero: full bleed (feedback round 1) ---- */
+.hero {
+  position: relative; isolation: isolate; overflow: hidden;
+  min-height: 100svh; display: flex; align-items: flex-end;
+  background: var(--navy); color: var(--white);
+}
+.hero-photo { position: absolute; inset: 0; z-index: -3; background: var(--navy); }
+.hero-photo img { filter: saturate(0.92); }
+.hero-photo::after { opacity: 0.18; } /* the navy multiply veil from .photo, stronger here */
+/* Navy veil: deepest behind the copy (in the sky, top-left) and under the header; the domes stay clear. */
+.hero-veil {
+  position: absolute; inset: 0; z-index: -2; pointer-events: none;
+  background:
+    linear-gradient(180deg, color-mix(in srgb, var(--navy) 70%, transparent) 0%, color-mix(in srgb, var(--navy) 30%, transparent) 45%, transparent 62%),
+    linear-gradient(90deg, color-mix(in srgb, var(--navy) 50%, transparent) 0%, transparent 65%);
+}
+/* The live hero's overlay: the Kanadevia ridge graphic is a soft green-to-blue glow rising from the foot of the photo
+   (alpha 0 to 1 over its height). Kept low so it washes the fields, not the domes. */
+.hero-ridge {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: -1; pointer-events: none;
+  height: 30%; opacity: 0.9;
+  background-repeat: no-repeat; background-size: 100% 100%; background-position: 50% 100%;
+}
+.hero-inner {
+  position: relative; width: 100%; min-height: 100svh;
+  display: flex; flex-direction: column; justify-content: space-between; gap: 32px;
+  padding-top: calc(var(--header-h) + clamp(40px, 9vh, 110px));
+  padding-bottom: clamp(24px, 4vh, 40px);
+}
+.hero-copy { max-width: 760px; }
+.hero-title {
+  font: 700 clamp(42px, 5.6vw, 84px)/1.02 "Raleway", sans-serif; letter-spacing: -0.025em;
+  color: var(--white); max-width: 12ch; text-wrap: balance;
+}
 .hero-title .wm { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.08em; margin-bottom: -0.08em; }
 .hero-title .wi { display: inline-block; }
-.hero-lead { margin-top: 16px; max-width: 34ch; font-size: var(--fs-body); font-weight: 350; line-height: 1.45; color: var(--ink-2); } /* KAIB .hero-subtitle */
-.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; } /* KAIB .hero-button-list: gap 16, mt 48 */
-.hero-frame { position: relative; overflow: hidden; aspect-ratio: 4 / 3; border: 1px solid var(--line); background: var(--card); } /* KAIB .hero-frame: 1px --color-black100 */
-.hero-photo { position: absolute; inset: 0; }
-.hero-photo::after { opacity: 0.06; }
-.hero-ridge { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: auto; pointer-events: none; }
-@media (min-width: 1024px) {
-  .hero { min-height: min(100svh, 1000px); display: flex; padding-bottom: 40px; }
-  .hero-grid { flex: 1; grid-template-columns: 5fr 7fr; gap: var(--gap); }
-  .hero-copy { padding-bottom: 8px; }
-  .hero-frame { aspect-ratio: auto; min-height: 520px; }
-  .hero-actions { margin-top: 40px; gap: 16px; }
+.hero-lead {
+  margin-top: clamp(16px, 2vw, 24px); max-width: 40ch;
+  font-size: clamp(17px, 1.35vw, 20px); font-weight: 400; line-height: 1.45;
+  color: color-mix(in srgb, var(--white) 88%, var(--navy));
 }
-@media (min-width: 1024px) and (max-width: 1279px) { .hero-title { font-size: 44px; } }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: clamp(24px, 3vw, 40px); }
+.hero-caption {
+  flex: none; align-self: flex-end; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase;
+  color: color-mix(in srgb, var(--white) 80%, var(--navy));
+  display: flex; align-items: center; gap: 10px;
+}
+.hero-caption::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--brand-gradient); }
+@media (max-width: 767px) {
+  .hero-photo img { object-position: 30% 68% !important; } /* keep the domes in frame on portrait screens */
+  .hero-caption { display: none; }
+}
 
 /* ---- 2. Purpose ---- */
 .purpose { padding-top: calc(var(--space-section) * 0.75); }
